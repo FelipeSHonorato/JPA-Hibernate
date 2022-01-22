@@ -7,13 +7,33 @@ import loja.modelo.Produto;
 import loja.util.JPAUtil;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class CadastroDeProduto {
 
     public static void main(String[] args) {
+        cadastrarProduto();
+        EntityManager em = JPAUtil.getEntityManager();
+        ProdutoDao produtoDao = new ProdutoDao(em);
+
+        Produto p = produtoDao.buscarPorId(1l);
+        System.out.println(p.getPreco());
+
+        List<Produto> todos = produtoDao.buscarTodos();
+        todos.forEach(p2 -> System.out.println(p.getNome()));
+
+        List<Produto> todos2 = produtoDao.buscarPorNome("Xiaomi Redmi");
+        todos.forEach(p2 -> System.out.println(p.getNome()));
+
+        List<Produto> todos3 = produtoDao.buscarPorNomeDaCategoria("CELULARES");
+        todos.forEach(p2 -> System.out.println(p.getNome()));
+
+        BigDecimal todos4 = produtoDao.buscarPrecoDoProdutoComNome("Xiaomi Redmi");
+        todos.forEach(p2 -> System.out.println(p.getPreco()));
+    }
+
+    private static void cadastrarProduto() {
         EntityManager em = JPAUtil.getEntityManager();
 
         Categoria celulares = new Categoria("CELULARES");
