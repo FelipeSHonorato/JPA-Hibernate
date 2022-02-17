@@ -22,6 +22,8 @@ public class Produto {
     @JoinColumn(name = "categoria_id") //Informa o campo que será inserido na tabela Produtos que será a chave estrangeira
     private Categoria categoria;
 
+    private String cor;
+
     public Categoria getCategoria() {
         return categoria;
     }
@@ -29,11 +31,12 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
+    public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria, Cor cor) {
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
         this.categoria = categoria;
+        this.cor = cor.getValor();
     }
 
     public Long getId() {
@@ -66,5 +69,9 @@ public class Produto {
 
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
+    }
+
+    public String getCor() {
+        return cor;
     }
 }

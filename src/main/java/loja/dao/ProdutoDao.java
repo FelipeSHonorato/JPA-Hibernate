@@ -47,4 +47,11 @@ public class ProdutoDao {
                 .setParameter("nome2", nome)
                 .getSingleResult();
     }
+
+    public List<Produto> buscarPorCor(String nome){
+        String jpql = "SELECT p FROM Produto p WHERE p.cor.nome = :nome2";
+        return em.createQuery(jpql, Produto.class)
+                .setParameter("nome2", nome)
+                .getResultList();
+    }
 }
