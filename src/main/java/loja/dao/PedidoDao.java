@@ -34,4 +34,11 @@ public class PedidoDao {
                 .setParameter("nome2", nome)
                 .getResultList();
     }
+
+    //Método para somar o valor total de todos os pedidos criados
+    public BigDecimal valorTotalVendido(){
+        String jpql = "SELECT SUM(p.valorTotal) FROM Pedido p";
+        return em.createQuery(jpql, BigDecimal.class)
+                .getSingleResult();
+    }
 }

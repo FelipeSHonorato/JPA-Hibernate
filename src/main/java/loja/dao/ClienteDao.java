@@ -27,10 +27,12 @@ public class ClienteDao {
         return em.createQuery(jpql, Cliente.class).getResultList();
     }
 
-    public List<Cliente> buscarPorNome(String nome){
-        String jpql = "SELECT p FROM Cliente p WHERE p.nome = :nome2";
+    public Cliente buscarPorNome(String nome){
+        String jpql = "SELECT p FROM Cliente p WHERE p.nome = :nome";
         return em.createQuery(jpql, Cliente.class)
-                .setParameter("nome2", nome)
-                .getResultList();
+                .setParameter("nome", nome)
+                .getSingleResult();
     }
+
+
 }

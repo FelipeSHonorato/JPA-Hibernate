@@ -10,6 +10,7 @@ import loja.modelo.Produto;
 import loja.util.JPAUtil;
 
 import javax.persistence.EntityManager;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class CadastroDePedido extends Cadastros {
@@ -30,22 +31,40 @@ public class CadastroDePedido extends Cadastros {
         //Buscando na lista povoada de cliente um cliente especifico por ID
         Cliente c = clienteDao.buscarPorId(1l);
 
+        //Buscando na lista povoada de cliente um cliente especifico por nome
+        Cliente c1 = clienteDao.buscarPorNome("Janaina");
+
         //Buscando na lista povoada de produto um produto especifico por ID
         Produto p = produtoDao.buscarPorId(1l);
+
+        //Buscando na lista povoada de produto um produto especifico por nome
+        Produto p2 = produtoDao.buscarPorNome("IPhone 12");
+
 
         //Inicia conexão e informa que será efetuada uma ação
         em.getTransaction().begin();
 
-        //Criando um pedido
+        //Criando Pedido 1
         Pedido pedido = new Pedido(c);
-        pedido.adicionarItem(new ItemPedido(10, pedido, p));
+        pedido.adicionarItem(new ItemPedido(1, pedido, p));
+
+        //Criando Pedido 2
+        Pedido pedido2 = new Pedido(c1);
+        pedido.adicionarItem(new ItemPedido(2, pedido, p2));
+
 
         //Cadastrando o pedido
         PedidoDao pedidoDao = new PedidoDao(em);
         pedidoDao.cadastrar(pedido);
+        pedidoDao.cadastrar(pedido2);
+
 
         //Commitando as ações no banco de dados
         em.getTransaction().commit();
+
+        //Somando valor total de todos os pedidos criados
+        BigDecimal totalVendido = pedidoDao.valorTotalVendido();
+        System.out.println("VALOR TOTAL: " + totalVendido);
 
         //Fechando conexão
         em.close(); //Fechando a conexão

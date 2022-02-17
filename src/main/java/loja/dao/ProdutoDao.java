@@ -1,5 +1,6 @@
 package loja.dao;
 
+import loja.modelo.Cliente;
 import loja.modelo.Produto;
 
 import javax.persistence.EntityManager;
@@ -27,10 +28,10 @@ public class ProdutoDao {
         return em.createQuery(jpql, Produto.class).getResultList();
     }
 
-    public List<Produto> buscarPorNome(String nome){
-        String jpql = "SELECT p FROM Produto p WHERE p.nome = :nome2";
+    public List<Produto> buscarPorNomeLista(String nome){
+        String jpql = "SELECT p FROM Produto p WHERE p.nome = :nome";
         return em.createQuery(jpql, Produto.class)
-                .setParameter("nome2", nome)
+                .setParameter("nome", nome)
                 .getResultList();
     }
 
@@ -54,4 +55,12 @@ public class ProdutoDao {
                 .setParameter("nome2", nome)
                 .getResultList();
     }
+
+    public Produto buscarPorNome(String nome){
+        String jpql = "SELECT p FROM Produto p WHERE p.nome = :nome";
+        return em.createQuery(jpql, Produto.class)
+                .setParameter("nome", nome)
+                .getSingleResult();
+    }
+
 }
