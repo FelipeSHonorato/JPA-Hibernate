@@ -50,10 +50,15 @@ public class Cadastros {
         //Buscando uma categoria cadastrada para ser utilizada na entidade atual
         CategoriaDao categoriaDao = new CategoriaDao(em);
         Categoria categoria = categoriaDao.buscarPorId(1l);
+        Categoria categoria2 = categoriaDao.buscarPorId(2l);
+        Categoria categoria3 = categoriaDao.buscarPorId(3l);
+
 
         //Criando os produtos
         Produto celular1 = new Produto("Xiaomi Redmi", "8gb RAM", new BigDecimal("800"), categoria, Cor.VERMELHO);
         Produto celular2 = new Produto("IPhone 12", "12gb RAM", new BigDecimal("1500"), categoria, Cor.PRETO);
+        Produto computador = new Produto("Intel I7", "32gb RAM", new BigDecimal("7500"), categoria2, Cor.AZUL);
+        Produto televisor = new Produto("TV Samsung","42 pol", new BigDecimal("1800"), categoria3, Cor.VERMELHO );
 
         //Instanciando a DAO para executar as ações no Banco de Dados
         ProdutoDao produtoDao = new ProdutoDao(em);
@@ -64,6 +69,9 @@ public class Cadastros {
         //Ações a serem executadas das DAOs no Banco de Dados
         produtoDao.cadastrar(celular1);
         produtoDao.cadastrar(celular2);
+        produtoDao.cadastrar(computador);
+        produtoDao.cadastrar(televisor);
+
 
         //Commitando as ações no banco de dados
         em.getTransaction().commit();

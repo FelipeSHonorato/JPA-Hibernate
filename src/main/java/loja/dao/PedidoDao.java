@@ -2,6 +2,7 @@ package loja.dao;
 
 import loja.modelo.Pedido;
 import loja.modelo.Produto;
+import loja.vo.RelatorioDeVendasVo;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
@@ -41,4 +42,20 @@ public class PedidoDao {
         return em.createQuery(jpql, BigDecimal.class)
                 .getSingleResult();
     }
+
+    public List<RelatorioDeVendasVo> relatorioDeVendas(){
+        String jpql = "SELECT new loja.vo.RelatorioDeVendasVo( "
+                + "produto.nome, "
+                + "SUM(item.quantidade), "
+                + "MAX(pedido.data)) "
+                + "FROM Pedido pedido "
+                + "JOIN pedido.itens item "
+                + "JOIN item.produto produto "
+                + "GROUP BY produto.nome "
+                + "ORDER BY SUM(item.quantidade) DESC";
+        return em.createQuery(jpql, RelatorioDeVendasVo.class)
+                .getResultList();
+    }
+    /* Para realizar a consulta avançada acima foi criada uma classe especifica para separar as consultas (cada linha)
+     A classe deve conter o caminho completo ao ser mencionada no SELECT*/
 }
