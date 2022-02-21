@@ -17,11 +17,15 @@ public class ItemPedido {
 
     private int quantidade;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
+    /*Utilizado carregamento LAZY nas relações com final ToOne para evitar perdas de performance quando for efetuado algum tipo simples de consulta ao Banco de Dados.
+    Por padrão todo relacionamento ToOne vem com o fetch IGGER carregado, então é o JPA automaticamente efetuado um JOIN seja qual for a consulta carregando todos
+    os relacionamentos automaticamente.*/
+
     @JoinColumn(name = "pedido")
     private Pedido pedido;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "produto_id")
     private Produto produto;
 

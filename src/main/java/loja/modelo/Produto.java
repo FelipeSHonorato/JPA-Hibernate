@@ -18,7 +18,7 @@ public class Produto {
     private LocalDate dataCadastro = LocalDate.now();
 
     //@Enumerated(EnumType.STRING) Através dessa anotação o tipo da coluna que será criada na tabela será de acordo com o nome das categorias do ENUM e não na ordem que vem como padrão
-    @ManyToOne //Relação de muitos para um -> Muitos produtos podem ter a mesma categoria, porem muitas categorias não podem ter mesmo produto.
+    @ManyToOne (fetch = FetchType.LAZY) //Relação de muitos para um -> Muitos produtos podem ter a mesma categoria, porem muitas categorias não podem ter mesmo produto.
     @JoinColumn(name = "categoria_id") //Informa o campo que será inserido na tabela Produtos que será a chave estrangeira
     private Categoria categoria;
 

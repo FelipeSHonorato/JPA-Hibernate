@@ -58,4 +58,15 @@ public class PedidoDao {
     }
     /* Para realizar a consulta avançada acima foi criada uma classe especifica para separar as consultas (cada linha)
      A classe deve conter o caminho completo ao ser mencionada no SELECT*/
+
+    public Pedido buscarPedidoComCliente(Long id){
+        return em.createQuery("SELECT p FROM Pedido p JOIN FETCH p.cliente WHERE p.id = : id",Pedido.class)
+                .setParameter("id", id)
+                .getSingleResult();
+    }
+    /* Como a JPA que administra a abertura e fechamento do EntityManager, uma consulta com status
+    * LASY pode causar uma exception por justamente não existir JOINS para entidades relacionadas,
+    * para evitar isso caso o programa em desenvolvimento for utilizar mais de uma
+    * informação e ela estiver em uma relação de entidades, é necessário criar uma query com JOIN FETCH para justamente
+    * informar no momento da consulta que vc irá consultar tb um dado de uma entidade relacionada. */
 }
