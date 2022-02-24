@@ -85,7 +85,9 @@ public class CadastroDePedido extends Cadastros {
             System.out.println("VALOR TOTAL: " + totalVendido);
 
             List<RelatorioDeVendasVo> relatorio = pedidoDao.relatorioDeVendas();
-            relatorio.forEach(System.out::println);
+            for (RelatorioDeVendasVo relatorioDeVendasVo : relatorio) {
+                    System.out.println(relatorioDeVendasVo);
+            }
 
 
             //Fechando conexão

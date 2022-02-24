@@ -1,0 +1,15 @@
+D:\Dev Projects\JPA-Hibernate\src\main\java\loja\modelo\Categoria.java
+D:\Dev Projects\JPA-Hibernate\src\main\java\loja\testes\Cadastros.java
+D:\Dev Projects\JPA-Hibernate\src\main\java\loja\vo\RelatorioDeVendasVo.java
+D:\Dev Projects\JPA-Hibernate\src\main\java\loja\testes\CadastroDePedido.java
+D:\Dev Projects\JPA-Hibernate\src\main\java\loja\dao\CategoriaDao.java
+D:\Dev Projects\JPA-Hibernate\src\main\java\loja\modelo\ItemPedido.java
+D:\Dev Projects\JPA-Hibernate\src\main\java\loja\modelo\Pedido.java
+D:\Dev Projects\JPA-Hibernate\src\main\java\loja\modelo\Cliente.java
+D:\Dev Projects\JPA-Hibernate\src\main\java\loja\util\JPAUtil.java
+D:\Dev Projects\JPA-Hibernate\src\main\java\loja\dao\ClienteDao.java
+D:\Dev Projects\JPA-Hibernate\src\main\java\loja\testes\PerformanceConsultas.java
+D:\Dev Projects\JPA-Hibernate\src\main\java\loja\dao\ProdutoDao.java
+D:\Dev Projects\JPA-Hibernate\src\main\java\loja\modelo\Produto.java
+D:\Dev Projects\JPA-Hibernate\src\main\java\loja\dao\PedidoDao.java
+D:\Dev Projects\JPA-Hibernate\src\main\java\loja\modelo\Cor.java
