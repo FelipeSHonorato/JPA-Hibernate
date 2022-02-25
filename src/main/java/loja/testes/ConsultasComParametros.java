@@ -30,7 +30,6 @@ public class ConsultasComParametros {
             for (Produto produto2 : produtoComCriteria) {
             System.out.println(produto2);
             System.out.println(produto2.getCategoria());
-
         }
     }
 

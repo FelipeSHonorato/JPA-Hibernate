@@ -28,11 +28,10 @@ public class ClienteDao {
     }
 
     public Cliente buscarPorNome(String nome){
-        String jpql = "SELECT p FROM Cliente p WHERE p.nome = :nome";
+        String jpql = "SELECT p FROM Cliente p WHERE p.dadosPessoais.nome = :nome";
         return em.createQuery(jpql, Cliente.class)
                 .setParameter("nome", nome)
                 .getSingleResult();
     }
-
 
 }
