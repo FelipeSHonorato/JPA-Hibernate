@@ -5,7 +5,14 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity //Informa que essa classe é uma tabela no banco de dados
+
 @Table(name = "produtos") //Anotação utilizada para informar ao java que apesar do nome da classe ser Produto o nome da tabela será produtos
+
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//Inheritance - Informa que essa Entidade tem classes que herdam ela.
+// SINGLE-TABLE = Utilizado para criar uma só tabela com os atributos das classes que extendem essa classe Produto
+// JOINED = Cria Joins para ligar os atributos das classes que herdam com a classe Produto
+
 public class Produto {
 
     @Id //Informa que esse atributo é a primary key da tabela
